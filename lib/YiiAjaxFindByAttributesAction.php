@@ -34,6 +34,14 @@ class YiiAjaxFindByAttributesAction extends YiiAjaxFindAction {
 			}
 		}
 
+		if ($this->requestModel) {
+			$this->requestModel->setAttributes($attributes);
+			if (!$this->requestModel->validate()) {
+				throw new CHttpException(400, 'You request is invalid!');
+			}
+			$attributes = $this->requestModel->getAttributes();
+		}
+
 		//  find models
 		$models = array();
 		if (!empty($attributes)) {
