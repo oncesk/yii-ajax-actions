@@ -12,6 +12,11 @@ abstract class YiiAjaxFindAction extends YiiAjaxViewRenderAction {
 	public $criteria;
 
 	/**
+	 * @var CModel
+	 */
+	public $requestModel;
+
+	/**
 	 * @var array
 	 */
 	public $responseAttributes = array();
