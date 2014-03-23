@@ -1,4 +1,5 @@
 <?php
-class YiiAjaxFindByPkAction extends YiiAjaxBaseAction {
+class YiiAjaxFindByPkAction extends YiiAjaxViewRenderAction {
+
 
 }
