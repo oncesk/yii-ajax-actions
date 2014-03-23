@@ -6,15 +6,20 @@ class YiiAjaxFindByPkAction extends YiiAjaxFindAction {
 	 */
 	public $requestVarName = 'id';
 
+	/**
+	 * @var CActiveRecord
+	 */
+	public $foundModel;
+
 	protected function find() {
 		$id = Yii::app()->getRequest()->getParam($this->requestVarName, null);
 		if ($id) {
-			$model = $this->model->findByPk($id);
-			if ($model) {
+			$this->foundModel = $this->model->findByPk($id);
+			if ($this->foundModel) {
 				if ($this->enableViewRender) {
-					$this->scope['model'] = $model;
+					$this->scope['model'] = $this->foundModel;
 				} else {
-					$this->response = $this->getAttributes($model);
+					$this->response = $this->getAttributes($this->foundModel);
 				}
 			}
 		}
